@@ -39,6 +39,23 @@ sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf'
 sudo ldconfig
 ```
 
+## How do I not let this be a thing? ##
+
+JIRA is meant to be public, and as such, has default weak configurations that allow for 
+anyone to access public aspects of your boards. There are a few mitigations you can implement:
+
+- Server Side Rate-Limiting
+- Firewall Rules
+- Granular File Permissions on JIRA
+- Require Authentication to JIRA
+
+Here are some links for reference:
+
+- https://confluence.atlassian.com/adminjiraserver071/configuring-jira-application-options-802593101.html
+- https://confluence.atlassian.com/adminjiraserver073/configuring-file-attachments-861253987.html
+- https://www.nginx.com/blog/rate-limiting-nginx/
+- https://stackoverflow.com/questions/131681/how-can-i-implement-rate-limiting-with-apache-requests-per-second
+
 ## Shouts ##
 
 Big shoutout to hermit for finding the initial dorks that led to this tool. Shoutout to 
