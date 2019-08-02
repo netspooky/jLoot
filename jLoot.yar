@@ -92,3 +92,23 @@ strings:
 condition:
    any of them
 }
+
+rule OX0BANANA : secret {
+meta:
+  Author = "0x0Banana"
+  Description = "Misc rules by 0x0banana"
+strings:
+   $str0 = ".squashfs" nocase
+   $str1 = "elastic" nocase
+   $str2 = "privkey"
+   $str3 = "WWW-Authenticate"
+   $str4 = ".htaccess"
+   $str5 = "id_rsa"
+   $str6 = "WONTFIX"
+   $str7 = ".gitconfig"
+   $str8 = ".bash_history"
+   $str9 = "apikey" nocase
+
+condition:
+   any of them
+}
